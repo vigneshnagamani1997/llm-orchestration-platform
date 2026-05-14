@@ -1,0 +1,287 @@
+# LLM Orchestration Platform — Setup Guide
+
+## Overview
+
+This project supports:
+- GitHub repository ingestion
+- AST-based code intelligence
+- Ollama local LLM integration
+- Chroma vector database
+- RAG pipelines
+- Multi-agent orchestration
+- Redis queues
+- WebSockets
+
+---
+
+# Clone Repository
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+
+cd llm-orchestration-platform
+```
+
+---
+
+# Install Ollama
+
+## Windows
+
+Download:
+
+https://ollama.com/download/windows
+
+## Mac
+
+```bash
+brew install ollama
+```
+
+## Linux
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+---
+
+# Start Ollama
+
+```bash
+ollama serve
+```
+
+---
+
+# Pull Models
+
+## Chat Model
+
+```bash
+ollama pull llama3.1
+```
+
+## Embedding Model
+
+```bash
+ollama pull nomic-embed-text
+```
+
+---
+
+# Install MongoDB
+
+Download:
+
+https://www.mongodb.com/try/download/community
+
+Start MongoDB:
+
+```bash
+mongod
+```
+
+---
+
+# Install Redis
+
+## Docker
+
+```bash
+docker run -d --name redis -p 6379:6379 redis
+```
+
+---
+
+# Install ChromaDB
+
+```bash
+pip install chromadb
+```
+
+Run:
+
+```bash
+chroma run --host localhost --port 8000
+```
+
+---
+
+# Backend Setup
+
+Navigate:
+
+```bash
+cd apps/api
+```
+
+Install:
+
+```bash
+npm install
+```
+
+---
+
+# Create Backend Environment File
+
+Create:
+
+```text
+apps/api/.env
+```
+
+Add:
+
+```env
+PORT=4000
+
+MONGO_URI=mongodb://localhost:27017/llm-orchestration
+
+OLLAMA_URL=http://localhost:11434
+
+CHROMA_URL=http://localhost:8000
+
+REDIS_HOST=localhost
+REDIS_PORT=6379
+```
+
+---
+
+# Run Backend
+
+```bash
+npm run dev
+```
+
+Expected:
+
+```text
+MongoDB connected
+API running on 4000
+```
+
+Backend URL:
+
+```text
+http://localhost:4000
+```
+
+---
+
+# Frontend Setup
+
+Open new terminal:
+
+```bash
+cd apps/frontend
+```
+
+Install:
+
+```bash
+npm install
+```
+
+Run:
+
+```bash
+npm run dev
+```
+
+Frontend URL:
+
+```text
+http://localhost:5173
+```
+
+---
+
+# Running Services
+
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:5173 |
+| Backend API | http://localhost:4000 |
+| Ollama | http://localhost:11434 |
+| ChromaDB | http://localhost:8000 |
+| MongoDB | mongodb://localhost:27017 |
+| Redis | localhost:6379 |
+
+---
+
+# Test APIs
+
+## Health
+
+```bash
+curl http://localhost:4000/api/health
+```
+
+## GitHub
+
+```bash
+curl http://localhost:4000/api/github/octocat
+```
+
+## Repository Ingestion
+
+```bash
+curl --location "http://localhost:4000/api/repositories/ingest" \
+--header "Content-Type: application/json" \
+--data '{
+  "repoUrl": "https://github.com/vercel/ms.git"
+}'
+```
+
+## RAG Query
+
+```bash
+curl --location "http://localhost:4000/api/rag/query" \
+--header "Content-Type: application/json" \
+--data '{
+  "repo": "repo_ms",
+  "question": "Explain middleware"
+}'
+```
+
+---
+
+# Recommended VSCode Extensions
+
+- ES7+ React Snippets
+- Tailwind CSS IntelliSense
+- Prettier
+- ESLint
+- GitLens
+
+---
+
+# Final Architecture
+
+```text
+Frontend (React)
+        ↓
+Backend API (Node.js)
+        ↓
+Orchestrator Layer
+        ↓
+Agents + Memory + Tools
+        ↓
+Ollama + Chroma + MongoDB + Redis
+```
+
+---
+
+# Platform Features
+
+✅ GitHub Intelligence
+✅ AST Parsing
+✅ Chroma Vector Search
+✅ Ollama Local LLMs
+✅ RAG Pipelines
+✅ Multi-Agent Systems
+✅ AI Execution Tracing
+✅ Autonomous Agents
+✅ PR Review Agents

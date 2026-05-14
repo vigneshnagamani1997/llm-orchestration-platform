@@ -1,0 +1,141 @@
+# =========================
+# Dependencies
+# =========================
+*/**/node_modules/
+.pnpm-store/
+.npm/
+
+# =========================
+# Build Output
+# =========================
+dist/
+build/
+.next/
+coverage/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# =========================
+# Environment Files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# =========================
+# TypeScript
+# =========================
+*.tsbuildinfo
+
+# =========================
+# Runtime Files
+# =========================
+tmp/
+temp/
+.cache/
+
+# =========================
+# Repository Storage
+# =========================
+storage/repositories/
+repositories/
+
+# =========================
+# ChromaDB
+# =========================
+chroma/
+chromadb/
+*.sqlite3
+
+# =========================
+# MongoDB
+# =========================
+data/db/
+
+# =========================
+# Redis
+# =========================
+dump.rdb
+
+# =========================
+# Docker
+# =========================
+.docker/
+docker-data/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+venv/
+.envrc
+
+# =========================
+# Frontend
+# =========================
+apps/frontend/node_modules/
+apps/frontend/dist/
+
+# =========================
+# Backend
+# =========================
+apps/api/node_modules/
+apps/api/dist/
+
+# =========================
+# Uploads / Generated Files
+# =========================
+uploads/
+generated/
+exports/
+
+# =========================
+# AI / Embedding Cache
+# =========================
+embeddings/
+vector-cache/
+model-cache/
+
+# =========================
+# OS Files
+# =========================
+Thumbs.db
+Desktop.ini
+
+# =========================
+# Testing
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# Secrets / Keys
+# =========================
+*.pem
+*.key
+*.crt
+*.p12
+
+# =========================
+# Optional Lock Files
+# =========================
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
